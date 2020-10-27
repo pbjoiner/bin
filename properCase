@@ -1,0 +1,106 @@
+#!/usr/bin/perl
+# properCase
+#
+#	$HeadURL: http://scm.corp.convio.com/svn/convio/design/trunk/Deployment_Source/Bin/properCase $
+#	$Id: properCase 272069 2013-12-12 20:45:13Z pjoiner@convio.com $
+#
+# changes text from STDIN to proper case
+# and writes to STDOUT
+#
+# acquired from hiker_jjw 
+# at http://www.webmasterworld.com
+
+use warnings;
+use English;
+use strict;
+
+print &make_proper(<STDIN>);
+
+exit;
+
+sub make_proper {
+	my ($string) = @_;
+	my @words = split (/\s+/, lc $string);
+	my @new_words = ();
+	my $new_word = "";
+	
+	foreach my $word (@words) {
+	
+		# Starts with Non-Alphanum Character
+		my $starting_non_alphanum = "";
+		if ($word =~ /^(\W)+(.*)/) {
+			$starting_non_alphanum = $1;
+			$word = $2;
+		}
+		
+		# Ends with Non-Alphanum Character
+		my $ending_non_alphanum = "";
+		if ($word =~ /(.*)(\W)+$/) {
+			$word = $1;
+			$ending_non_alphanum = $2;
+		}
+		
+		# Contains a Non-Alphanum Character
+		if ($word =~ /^(\w+)(\W)(\w+)(\W?)(\w?)$/) {
+			my $p1_word = $1;
+			my $p2_non_alphanum = $2;
+			my $p3_word = $3;
+			my $p4_non_alphanum = $4;
+			my $p5_letter = $5;
+			
+			$p1_word = ucfirst $p1_word;
+			$p5_letter = lc $p5_letter;
+	
+			if (length $p1_word > 2 && length $p3_word == 1) {
+				$p3_word = lc $p3_word;
+	
+			} elsif (length $p1_word == 1 && length $p3_word == 1) {
+				$p3_word = uc $p3_word;
+	
+			} else {
+				$p3_word = ucfirst $p3_word;
+			}
+		
+			$new_word = $p1_word . $p2_non_alphanum . $p3_word . $p4_non_alphanum . $p5_letter;
+		
+		# Other
+		} else {
+			$new_word = ucfirst $word;
+		}
+		
+		# Recombine the Alphanum Character
+		$new_word = $starting_non_alphanum . $new_word . $ending_non_alphanum;
+		
+		push (@new_words, $new_word);
+	}
+	
+	my $new_string = join(" ", @new_words);
+	
+	$new_string =~ s/(\w,?) And (\w)/$1 and $2/g;
+	$new_string =~ s/(\w,?) Or (\w)/$1 or $2/g;
+	$new_string =~ s/(\w,?) But (\w)/$1 but $2/g;
+	
+	$new_string =~ s/(\w) At (\w)/$1 at $2/g;
+	$new_string =~ s/(\w) In (\w)/$1 in $2/g;
+	$new_string =~ s/(\w) On (\w)/$1 on $2/g;
+	$new_string =~ s/(\w) To (\w)/$1 to $2/g;
+	$new_string =~ s/(\w) From (\w)/$1 from $2/g;
+	
+	$new_string =~ s/(\w) Is (\w)/$1 is $2/g;
+	$new_string =~ s/(\w) A (\w)/$1 a $2/g;
+	$new_string =~ s/(\w) An (\w)/$1 an $2/g;
+	$new_string =~ s/(\w) Am (\w)/$1 am $2/g;
+	$new_string =~ s/(\w) For (\w)/$1 for $2/g;
+	$new_string =~ s/(\w) Of (\w)/$1 of $2/g;
+	$new_string =~ s/(\w) The (\w)/$1 the $2/g;
+	
+	if (length $new_string > 60) {
+		$new_string =~ s/(\w) With (\w)/$1 with $2/g; #?
+		$new_string =~ s/(\w) That (\w)/$1 that $2/g; #?
+	}
+	
+	$new_string = ucfirst $new_string;
+	
+	return ($new_string);
+
+} # End sub make_proper

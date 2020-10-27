@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# make directory structure for Jira issue
+
+thisDir=${PWD##*/}
+issue=`printf "%03d\n" $1`
+mkdir "$thisDir-$issue"
+mkdir "$thisDir-$issue/Source"
+touch "$thisDir-$issue/z-notes.txt"
+echo "/Users/paulbjoiner/bin/idea ${PWD}/$thisDir-$issue/z-notes.txt"
+/Users/paulbjoiner/bin/idea "${PWD}/$thisDir-$issue/z-notes.txt"

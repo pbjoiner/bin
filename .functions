@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# define my functions
+
+hlg() {
+	if [ $# -eq 0 ]; then
+		heroku logs -t -n 40
+
+	else
+		heroku logs -t -n 40 -s $1
+	fi
+}
+
+hdp() {
+	if [ $# -eq 0 ]; then
+		git add .;git commit -m debug;git push heroku
+		echo "committed and pushed with comment \"debug\""
+
+	else
+		comment=''
+		for word in ${@}; do
+			comment+=" $word";
+		done
+		git add .;git commit -m "$comment";git push
+	fi
+}

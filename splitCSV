@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# splitCSV
+#
+# Split a CSV file into smaller chunks.
+#
+# Usage:
+#
+# splitCSV [filename] [size in lines]
+#
+
+# check if an input filename was passed as a command line argument:
+if [ ! $# > 0 ]; then
+	echo "Please specify the name of a file to split!"
+	exit
+fi
+
+# check if the second parameter is numeric
+function is_integer() {
+    printf "%d" $1 > /dev/null 2>&1
+    return $?
+}
+
+# default to 20000 lines
+
+snafu=$(echo "$2" | grep -E "/^[-+]?(?:\.[0-9]+|(?:0|[1-9][0-9]*)(?:\.[0-9]*)?)$/")
+if [ -z "$snafu" ] ;
+then
+	echo fileSize default value used
+	fileSize=20000
+else
+	echo fileSize variable found "$2"
+	fileSize="$2"
+fi
+echo fileSize: $fileSize
+
+NAME=`echo "$1" | cut -d'.' -f1`
+EXTENSION=`echo "$1" | cut -d'.' -f2`
+OUTPUTDIR="SPLIT_$NAME"
+
+# create a directory to store the output:
+if [ ! -d "$OUTPUTDIR" ]; then
+	mkdir "$OUTPUTDIR"
+fi
+echo Output Directory: "$OUTPUTDIR"
+
+# create a temporary file containing the header without
+# the content:
+head -n 1 $1 > header.csv
+
+# create a temporary file containing the content without
+# the header:
+tail -n +2 $1 > content.csv
+
+# split the content file into multiple files of 20000 lines each:
+split -l "$fileSize" content.csv "$OUTPUTDIR"/"$NAME"_
+
+fileList=`ls -A "$OUTPUTDIR"`
+
+# loop through the new split files, adding the header# and a '.csv' extension:
+for f in $fileList; do
+	cat header.csv "$OUTPUTDIR/$f" > "$OUTPUTDIR/$f.csv";
+	rm "$OUTPUTDIR/$f";
+done
+
+# remove the temporary files:
+rm header.csv
+rm content.csv
+rm 0

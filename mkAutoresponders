@@ -1,0 +1,11 @@
+#!/bin/sh
+mkdir Autoresponders
+cd Autoresponders
+mkdir Single\ Gift
+touch Single\ Gift/HTML\ Content.html
+touch Single\ Gift/Plain\ Text.txt
+mkdir Recurring\ Gift
+touch Recurring\ Gift/HTML\ Content.html
+touch Recurring\ Gift/Plain\ Text.txt
+~/bin/idea Single\ Gift/HTML\ Content.html
+~/bin/idea Single\ Gift/Plain\ Text.txt

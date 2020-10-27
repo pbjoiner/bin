@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# automate some tedious shit
+#
+dirName=`echo $@ | tr ' ' '_' | tr '/' '-'`
+mkdir $dirName
+cd $dirName
+touch Thank\ You\ Page.html
+mkdir Autoresponder
+touch Autoresponder/HTML\ Email\ Content.html
+touch Autoresponder/Plain\ Text\ Email\ Content.html
+~/bin/idea Autoresponder/Plain\ Text\ Email\ Content.html
+~/bin/idea Autoresponder/HTML\ Email\ Content.html
+~/bin/idea Thank\ You\ Page.html
