@@ -19,6 +19,7 @@ alias updatedb="sudo /usr/libexec/locate.updatedb"
 alias teg='cd ~/Projects;ls -AlG'
 alias lc='wc -l'
 alias gi='cp ~/bin/default.gitignore ./.gitignore'
+alias getit='wget -r -w 10 --random-wait -c -nc -R jpg,gif,png,pdf,m4a,mpg,svg'
 
 # show and hide files in Finder
 #alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
