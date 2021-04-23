@@ -3,9 +3,10 @@ echo -n Password:
 read -s password
 echo
 cd ~/Projects
+find "." -name ".DS_Store" -exec rm -rfv {} \;
 lftp -u paulj,${password} sftp://paulj@ftp.pmgdirect.net/Engage\ FTP/Engage\ Team\ Folder/PBJ\ Working\ Files/Projects <<EOF
 
-mirror -R -c --exclude /deps/ --exclude /_build/ --exclude /node_modules/ --exclude /000-Bitbucket/ --exclude /005-Heroku/ --exclude /040-FTP/ --exclude /assets/ --exclude /.DS_store/
+mirror -R -c --exclude /deps/ --exclude /_build/ --exclude /node_modules/ --exclude /000-Bitbucket/ --exclude /005-Heroku/ --exclude /040-FTP/ --exclude /assets/
 
 bye
 EOF
