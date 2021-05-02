@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+cd ~/bin
+cp .aliases ../
+cp .functions ../
+cp .tldrrc ../
+cp .zprofile ../
+cp .zshrc ../
