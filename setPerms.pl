@@ -1,7 +1,5 @@
 #!/usr/bin/perl
-#
-#	$HeadURL: http://scm.corp.convio.com/svn/convio/design/trunk/Deployment_Source/Bin/setPerms.pl $
-#	$Id: setPerms.pl 270941 2013-09-13 17:09:57Z pjoiner@convio.com $
+# setPerms.pl
 #
 # crawls directory tree and sets file permissions for httpd
 
@@ -26,7 +24,7 @@ DIRLOOP: foreach (@dirList) {
 
 	} else {
 		chown 1000, 1000, $ARG;
-		
+
 		if (-d $ARG) {
 			chmod 0775, $ARG;
 			push @dirList, getDirList($ARG);
@@ -44,18 +42,18 @@ sub getDirList {
 	opendir GDL_DIRECTORY, $directory;
 
 	DIRLOOP: foreach (readdir GDL_DIRECTORY) {
-		
+
 		if (/^\./) {
 			next DIRLOOP;
-		
+
 		} elsif (/bin/i) {
 			next DIRLOOP;
-		
+
 		} else {
 			push @fileList, $directory . "/" .$ARG;
 		}
 	}
-	
+
 	closedir GDL_DIRECTORY;
 
 	return @fileList;
