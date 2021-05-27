@@ -1,0 +1,19 @@
+{
+   "themes": {
+      "ocean"         : {
+         "commandName"       : "bold, cyan",
+         "mainDescription"   : "",
+         "exampleDescription": "green",
+         "exampleCode"       : "cyan",
+         "exampleToken"      : "dim"
+      },
+      "pbj": {
+         "commandName"       : "bold, green",
+         "mainDescription"   : "white",
+         "exampleDescription": "yellow",
+         "exampleCode"       : "bold, green",
+         "exampleToken"      : "reset, green"
+      }
+   },
+   "theme" : "pbj"
+}
