@@ -14,7 +14,7 @@ export PATH=$HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH:./
 
 # change prompt
 PROMPT="
-╭─%n@%m/%~
+╭─%n@%M/%~
 ╰─> "
 RPROMPT=""
 

@@ -105,7 +105,7 @@ source ~/.aliases
 source ~/.functions
 
 PROMPT="
-╭─%n@%m/%~
+╭─%n@%M/%~
 ╰─> "
 RPROMPT=""
 
