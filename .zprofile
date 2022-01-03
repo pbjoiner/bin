@@ -19,7 +19,7 @@ PROMPT="
 RPROMPT=""
 
 # plugins
-plugins=(zsh-syntax-highlighting sudo osx)
+plugins=(zsh-syntax-highlighting sudo macos)
 
 #AWSCLI
 export AWS_DEFAULT_REGION=us-east-1
