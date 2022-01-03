@@ -1,13 +1,11 @@
-#!/usr/sh
+#!/bin/zsh
 #
 # automate some tedious shit number 2
 #
-dirName=`echo $@ | tr ' ' '_' | tr '/' '-'`
+dirName=`echo $@ | tr " " "_" | tr "/" "-" | tr -d ":"`
 mkdir $dirName
 cd $dirName
-#touch Custom\ Styles\ and\ Script\ for\ This\ Form.html
-touch Hero.html
-#touch Replacement\ Disclaimer.html
-#~/bin/idea Replacement\ Disclaimer.html
-~/bin/idea Hero.html
-#~/bin/idea Custom\ Styles\ and\ Script\ for\ This\ Form.html
+touch HTML.html
+touch Plain\ Text.txt
+~/bin/idea Plain\ Text.txt
+~/bin/idea HTML.html
