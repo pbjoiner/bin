@@ -23,6 +23,7 @@ dist
 *.tmp.*
 *.patch
 *.diff
+package-lock.json
 
 ### VisualStudioCode template
 .vscode/*
