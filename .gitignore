@@ -24,6 +24,7 @@ dist
 *.patch
 *.diff
 package-lock.json
+node_modules
 
 ### VisualStudioCode template
 .vscode/*
