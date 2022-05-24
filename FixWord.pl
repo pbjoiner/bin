@@ -9,10 +9,8 @@ my $inFile = $ARGV[0] || die 'FixWord requires the name of a text file to fix.';
 my $outFile = $ARGV[1] || '/tmp/FWTemp';
 
 my %transMap = (
-    "HRC's"                => 'HRC&rsquo;s',
-    '’'                    => '&rsquo;',
-    '’'                    => '&rsquo;',
-    '’'                    => '&rsquo;',
+    "'s "                  => '&rsquo;s ',
+    "n't "                 => 'n&rsquo;t ',
     '’'                    => '&rsquo;',
     '\\\\' . "'"           => '&rsquo;',
     '“'                    => '&ldquo;',
@@ -26,7 +24,7 @@ my %transMap = (
     '  '                   => ' ',
     ' & '                  => ' &amp; ',
     '…'                    => '&hellip;',
-    ' '                    => ' '
+    ' '                => ' '
 );
 
 open(my $inFileHandle, '<', $inFile) || die 'FixWord cannot open input file ' . $inFile . '!';
