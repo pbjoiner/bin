@@ -9,6 +9,7 @@ else
 	exit(1)
 end
 
+#noinspection RubyExpressionInStringInspection
 trans_map = {
 	"'s "                  => '&rsquo;s ',
 	"n't "                 => 'n&rsquo;t ',
@@ -20,19 +21,20 @@ trans_map = {
 	' -- '                 => ' &mdash; ',
 	' –– '                 => ' &mdash; ',
 	' – '                  => ' &mdash; ',
-	'([^!]{1})--([^>]{1})' => "\1&mdash;\2",
+	'(?<first>[^!]{1})--(?<second>[^>]{1})' => '\k<first>&mdash;\k<second>',
 	' - '                  => ' &mdash; ',
 	'  '                   => ' ',
 	' & '                  => ' &amp; ',
 	'…'                    => '&hellip;',
 	' '                    => ' ',
 	'®'                    => '&reg;',
+	'©'                    => '&copy;',
 }
 
 in_file.each do |line|
 
 	trans_map.each do |key, value|
-		line = line.gsub key, value
+		line = line.gsub /#{key}/, "#{value}"
 	end # end loop throuh replacements
 	out_file.write line
 end # end loop through file
