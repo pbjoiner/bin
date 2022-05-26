@@ -34,7 +34,7 @@ trans_map = {
 in_file.each do |line|
 
 	trans_map.each do |key, value|
-		line = line.gsub /#{key}/, "#{value}"
+		line = line.gsub /#{key}/, value
 	end # end loop throuh replacements
 	out_file.write line
 end # end loop through file
