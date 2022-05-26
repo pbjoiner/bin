@@ -2,7 +2,7 @@
 echo -n Password:
 read -s password
 echo
-cd ~/Projects
+cd ~/Projects || exit
 find "." -name ".DS_Store" -exec rm -rfv {} \;
 lftp -u paulj,${password} sftp://paulj@ftp.pmgdirect.net/Engage\ FTP/Engage\ Team\ Folder/PBJ\ Working\ Files/Projects <<EOF
 

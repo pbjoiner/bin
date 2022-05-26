@@ -1,5 +1,0 @@
-#!/bin/sh
-#
-# add current tag name to minified JS files
-#
-find . -name "*.min.js" -exec rename "s/\.min\.js/\.`git describe --tags`\.min\.js/g" {} \;

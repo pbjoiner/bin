@@ -1,0 +1,42 @@
+#!/usr/bin/ruby
+require 'fileutils'
+
+if File.exist?(ARGV[0])
+	in_file  = File.open(ARGV[0], 'r')
+	out_file = File.open('/tmp/fix.tmp', 'w')
+else
+	puts "File #{ARGV[0]} not found."
+	exit(1)
+end
+
+trans_map = {
+	"'s "                  => '&rsquo;s ',
+	"n't "                 => 'n&rsquo;t ',
+	'’'                    => '&rsquo;',
+	'\\\\' + "'"           => '&rsquo;',
+	'“'                    => '&ldquo;',
+	'”'                    => '&rdquo;',
+	'—'                    => '&mdash;',
+	' -- '                 => ' &mdash; ',
+	' –– '                 => ' &mdash; ',
+	' – '                  => ' &mdash; ',
+	'([^!]{1})--([^>]{1})' => "\1&mdash;\2",
+	' - '                  => ' &mdash; ',
+	'  '                   => ' ',
+	' & '                  => ' &amp; ',
+	'…'                    => '&hellip;',
+	' '                    => ' ',
+	'®'                    => '&reg;',
+}
+
+in_file.each do |line|
+
+	trans_map.each do |key, value|
+		line = line.gsub key, value
+	end # end loop throuh replacements
+	out_file.write line
+end # end loop through file
+
+in_file.close
+out_file.close
+FileUtils.mv '/tmp/fix.tmp', ARGV[0]

@@ -1,6 +1,0 @@
-#!/bin/sh
-#
-# fix Windows file names
-
-rename 's/Copy of //g' "$@"
-rename 's/[^a-zA-Z0-9-_\.]//g' "$@"

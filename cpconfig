@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-cd ~/bin
+cd ~/bin || exit
 cp .aliases ../
 cp .functions ../
 cp .tldrrc ../
