@@ -11,24 +11,26 @@ end
 
 #noinspection RubyExpressionInStringInspection
 trans_map = {
-	"'s "                  => '&rsquo;s ',
-	"n't "                 => 'n&rsquo;t ',
-	'’'                    => '&rsquo;',
-	'\\\\' + "'"           => '&rsquo;',
-	'“'                    => '&ldquo;',
-	'”'                    => '&rdquo;',
-	'—'                    => '&mdash;',
-	' -- '                 => ' &mdash; ',
-	' –– '                 => ' &mdash; ',
-	' – '                  => ' &mdash; ',
+	"'s "                                   => '&rsquo;s ',
+	"n't "                                  => 'n&rsquo;t ',
+	'’'                                     => '&rsquo;',
+	'\\\\' + "'"                            => '&rsquo;',
+	'“'                                     => '&ldquo;',
+	'”'                                     => '&rdquo;',
+	'—'                                     => '&mdash;',
+	' -- '                                  => ' &mdash; ',
+	' –– '                                  => ' &mdash; ',
+	' – '                                   => ' &mdash; ',
 	'(?<first>[^!]{1})--(?<second>[^>]{1})' => '\k<first>&mdash;\k<second>',
-	' - '                  => ' &mdash; ',
-	'  '                   => ' ',
-	' & '                  => ' &amp; ',
-	'…'                    => '&hellip;',
-	' '                    => ' ',
-	'®'                    => '&reg;',
-	'©'                    => '&copy;',
+	' - '                                   => ' &mdash; ',
+	'  '                                    => ' ',
+	' & '                                   => ' &amp; ',
+	'…'                                     => '&hellip;',
+	' '                                 => ' ',
+	'®'                                     => '&reg;',
+	'©'                                     => '&copy;',
+	' "(?<quoted>[\s\w]+)" 	'               => ' &ldquo;\k<quoted>&rdquo; ',
+	'\.\.\.'                                => '&hellip;'
 }
 
 in_file.each do |line|
