@@ -16,7 +16,7 @@ alias tgz='tar -xzvf'
 alias updatedb="sudo /usr/libexec/locate.updatedb"
 alias teg='cd ~/Projects;ls -AlG'
 alias lc='wc -l'
-alias gi='cp ~/bin/.gitignore ./.gitignore'
+alias gi='cp ~/bin/.gitignore ./.gitignore; git init'
 alias getit='wget -r -w 10 --random-wait -c -nc -R jpg,gif,png,pdf,m4a,mpg,svg,woff,eot,ttf'
 
 # show and hide files in Finder

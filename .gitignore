@@ -1,6 +1,7 @@
 # Paul's default gitignore
 .idea
 idea
+.next
 studio
 z-notes.txt
 notes.txt
