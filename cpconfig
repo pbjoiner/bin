@@ -4,5 +4,15 @@ cd ~/bin || exit
 cp .aliases ../
 cp .functions ../
 cp .tldrrc ../
-cp .zprofile ../
-cp .zshrc ../
+
+if [ $(uname) = "Darwin" ]; then
+	echo "copying configuration for MacOS"
+	cp .zprofile.macos ../.zprofile
+	cp .zshrc.macos ../.zshrc
+
+elif [ $(uname) = "Linux" ]; then
+	echo "copying configuration for Ubuntu"
+	cp .zprofile.ubuntu ../.zprofile
+	cp .zshrc.ubuntu ../.zshrc
+
+fi
