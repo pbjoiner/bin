@@ -29,8 +29,10 @@ trans_map = {
 	'\u202F'                                => ' ',
 	'\u00AE'                                => '&reg;',
 	'\u00A9'                                => '&copy;',
-	' "(?<quoted>[\s\w]+)" '               => ' &ldquo;\k<quoted>&rdquo; ',
-	'\.\.\.'                                => '&hellip;'
+	' "(?<quoted>[\s\w]+)" '                => ' &ldquo;\k<quoted>&rdquo; ',
+	'\.\.\.'                                => '&hellip;',
+	'ñ'                                     => '&ntilde;',
+	'Ñ'                                     => '&Ntilde;',
 }
 
 in_file.each do |line|
