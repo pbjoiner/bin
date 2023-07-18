@@ -10,7 +10,7 @@ source ~/.aliases
 source ~/.functions
 
 #path
-export PATH=$HOME/bin:$HOME/.rbenv/shims/:/opt/local/bin:/opt/local/sbin:/usr/local/opt/python@3.10/libexec/bin:$PATH:./
+export PATH=$HOME/bin:$HOME/.rbenv/shims/:/opt/local/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:$PATH:./
 
 # change prompt
 PROMPT="
@@ -27,5 +27,13 @@ export AWS_DEFAULT_REGION=us-east-1
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# enable homebrew
+export HOMEBREW_PREFIX="/usr/local";
+export HOMEBREW_CELLAR="/usr/local/Cellar";
+export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 
 clear

@@ -10,7 +10,7 @@ source ~/.aliases
 source ~/.functions
 
 #path
-export PATH=$HOME/bin:$HOME/.rbenv/shims/:/opt/local/bin:/opt/local/sbin:/usr/local/opt/python@3.10/libexec/bin:$PATH:./
+export PATH=$HOME/bin:$HOME/.rbenv/shims/:/opt/local/bin:/opt/local/sbin:$PATH:./
 
 # change prompt
 PROMPT="
