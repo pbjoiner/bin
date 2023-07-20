@@ -19,6 +19,10 @@ alias lc='wc -l'
 alias gi='cp ~/bin/.gitignore ./.gitignore; git init'
 alias getit='wget -r -w 10 --random-wait -c -nc -R jpg,gif,png,pdf,m4a,mpg,svg,woff,eot,ttf'
 
+# Heroku
+alias hup="heroku ps:scale web=1"
+alias hdn="heroku ps:scale web=0"
+
 # show and hide files in Finder
 #alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 #alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
