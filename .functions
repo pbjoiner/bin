@@ -4,23 +4,22 @@
 
 hlg() {
 	if [ $# -eq 0 ]; then
-		heroku logs -t -n 40
+		heroku logs -t -n 40 --app `gitRemote`
 
 	else
-		heroku logs -t -n 40 -s $1
+		heroku logs -t -n 40 -s $1 --app `gitRemote`
 	fi
 }
 
-hdp() {
-	if [ $# -eq 0 ]; then
-		git add .;git commit -m debug;git push heroku
-		echo "committed and pushed with comment \"debug\""
+gitRemote() {
+	herokuRemote=`git config heroku.remote`
+
+	if [[ $herokuRemote == *stag* ]]; then
+		gitRemote="clo-hubspot-stag"
 
 	else
-		comment=''
-		for word in ${@}; do
-			comment+=" $word";
-		done
-		git add .;git commit -m "$comment";git push
+		gitRemote="clo-hubspot"
 	fi
+
+	echo $gitRemote
 }
