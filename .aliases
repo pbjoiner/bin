@@ -4,7 +4,7 @@
 
 alias cp='cp -vr'
 alias dir='ls -AlGF'
-#alias grep='grep -rIl --color=always --exclude="*\.git" --exclude-dir=node_modules'
+alias grep='grep -rIl --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox,node_modules}'
 alias hm='cd ~;clear'
 alias mv='mv -v'
 alias prep='perl -pi -w -e'
