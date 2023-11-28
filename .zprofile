@@ -10,7 +10,7 @@ source ~/.aliases
 source ~/.functions
 
 #path
-export PATH=$HOME/bin:$HOME/.rbenv/shims/:/opt/local/bin:/opt/local/sbin:$PATH:./
+export PATH=$HOME/bin:$HOME/.rbenv/shims/:/opt/local/bin:/opt/local/sbin:$HOME/.docker/bin:$PATH:./
 
 # change prompt
 PROMPT="
