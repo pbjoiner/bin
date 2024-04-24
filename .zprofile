@@ -6,19 +6,24 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # custom aliases and functions
+# shellcheck disable=SC1090
 source ~/.aliases
+# shellcheck disable=SC1090
 source ~/.functions
 
 #path
 export PATH=$HOME/bin:$HOME/.rbenv/shims/:/opt/local/bin:/opt/local/sbin:$HOME/.docker/bin:$PATH:./
 
 # change prompt
+# shellcheck disable=SC2034
 PROMPT="
 ╭─%n@%M/%~
 ╰─> "
+# shellcheck disable=SC2034
 RPROMPT=""
 
 # plugins
+# shellcheck disable=SC2034
 plugins=(zsh-syntax-highlighting sudo macos tldr)
 
 #AWSCLI

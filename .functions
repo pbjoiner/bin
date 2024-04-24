@@ -4,9 +4,11 @@
 
 hlg() {
 	if [ $# -eq 0 ]; then
+		# shellcheck disable=SC2046
 		heroku logs -t -n 40 --app `gitRemote`
 
 	else
+		# shellcheck disable=SC2046
 		heroku logs -t -n 40 -s $1 --app `gitRemote`
 	fi
 }
@@ -14,6 +16,7 @@ hlg() {
 gitRemote() {
 	herokuRemote=`git config heroku.remote`
 
+	# shellcheck disable=SC2039
 	if [[ $herokuRemote == *stag* ]]; then
 		gitRemote="clo-hubspot-stag"
 
