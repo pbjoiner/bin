@@ -24,7 +24,8 @@ my %transMap = (
     '  '                   => ' ',
     ' & '                  => ' &amp; ',
     '…'                    => '&hellip;',
-    ' '                => ' '
+    ' '                => ' ',
+    "'"                    => '&rsquo;'
 );
 
 open(my $inFileHandle, '<', $inFile) || die 'FixWord cannot open input file ' . $inFile . '!';
