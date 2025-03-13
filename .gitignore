@@ -30,6 +30,7 @@ dist
 *.diff
 package-lock.json
 node_modules
+*.sha512
 
 ### VisualStudioCode template
 .vscode/*
