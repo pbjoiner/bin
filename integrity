@@ -1,0 +1,5 @@
+#!/bin/sh
+# generate sha512 integrity HTML attribute
+openssl dgst -sha512 -binary "$1" | openssl base64 -A -out "$1".sha512
+sed -i.old '1s;^;integrity="sha512-;' "$1".sha512
+echo "\" crossorigin=\"anonymous\"" >> "$1".sha512
