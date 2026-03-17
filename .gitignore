@@ -101,3 +101,5 @@ erl_crash.dump
 .elixir_ls/
 /writerside
 /BrowserStackLocal
+/autoOne
+/autoTwo
