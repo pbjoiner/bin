@@ -1,4 +1,0 @@
-#!/bin/sh
-#
-# count non-blank lines
-cat $@ | grep '[^ ]' | grep -v '^CnBio_Import_ID' | grep -v '^SITE_ID' | wc -l
