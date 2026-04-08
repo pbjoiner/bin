@@ -1,0 +1,33 @@
+This is a test of fixword's functionality. Please, don't actually do anything with this.
+
+These Should Be rsquo
+	’
+	'
+	'
+
+This Should Be ldquo
+	“
+
+This Should Be rdquo
+	”
+
+These Should Be mdash
+	—
+	before text -- after text
+	before text –– after text
+	before text – after text
+	before text no space--after text no space
+	before text - after text
+
+This Should Be A Single Space
+	before text  after text
+
+This Should Be amp
+	before text & after text
+	This should be &unchanged.
+
+This should be helllip
+	…
+
+This Should Be A Plain Space
+	 

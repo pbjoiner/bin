@@ -1,0 +1,22 @@
+[package]
+name = "PaulBin"
+version = "0.1.0"
+edition = "2021"
+autolib = false
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+[build]
+target-dir = "./"
+
+[dependencies]
+regex = "1.12.3"
+regex-automata = "0.4.14"
+regex-syntax = "0.8.10"
+
+[[bin]]
+name = "fixwords"
+target = "fixwords.rs"
+path = "rust/fixwords.rs"
