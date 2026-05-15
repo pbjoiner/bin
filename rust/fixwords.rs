@@ -6,29 +6,38 @@ extern crate regex;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().collect();
-    let in_file = args.get(1).expect("FixWord requires the name of a text file to fix.");
+    let in_file = args
+        .get(1)
+        .expect("FixWord requires the name of a text file to fix.");
     let out_file = args.get(2).map(|s| s.as_str()).unwrap_or("/tmp/FWTemp");
 
+    // @formatter:off
     let trans_map: Vec<(regex::Regex, &str)> = vec![
-        (regex::Regex::new(r"'s ").unwrap(),            "&rsquo;s "),
-        (regex::Regex::new(r"n't ").unwrap(),           "n&rsquo;t "),
-        (regex::Regex::new(r"’").unwrap(),              "&rsquo;"),
-        (regex::Regex::new(r"\\'").unwrap(),            "&rsquo;"),
-        (regex::Regex::new(r"“").unwrap(),              "&ldquo;"),
-        (regex::Regex::new(r"”").unwrap(),              "&rdquo;"),
-        (regex::Regex::new(r"—").unwrap(),              "&mdash;"),
-        (regex::Regex::new(r" -- ").unwrap(),           " &mdash; "),
-        (regex::Regex::new(r" –– ").unwrap(),           " &mdash; "),
-        (regex::Regex::new(r" – ").unwrap(),            " &mdash; "),
-        // The Perl regex '([^!]{1})--([^>]{1})' replaced with capture groups and replacement
-        (regex::Regex::new(r"([^!])--([^>])").unwrap(), "${1}&mdash;${2}"),
-        (regex::Regex::new(r" - ").unwrap(),            " &mdash; "),
-        (regex::Regex::new(r"  ").unwrap(),             " "),
-        (regex::Regex::new(r" & ").unwrap(),            " &amp; "),
-        (regex::Regex::new(r"…").unwrap(),              "&hellip;"),
-        (regex::Regex::new(r" ").unwrap(),          " "),
-        (regex::Regex::new(r"'").unwrap(),              "&rsquo;"),
+        (regex::Regex::new(r"'s ").unwrap(),  "&rsquo;s "),
+        (regex::Regex::new(r"n't ").unwrap(), "n&rsquo;t "),
+        (regex::Regex::new(r"’").unwrap(),    "&rsquo;"),
+        (regex::Regex::new(r"\\'").unwrap(),  "&rsquo;"),
+        (regex::Regex::new(r"“").unwrap(),    "&ldquo;"),
+        (regex::Regex::new(r"”").unwrap(),    "&rdquo;"),
+        (regex::Regex::new(r"—").unwrap(),    "&mdash;"),
+        (regex::Regex::new(r" -- ").unwrap(), " &mdash; "),
+        (regex::Regex::new(r" –– ").unwrap(), " &mdash; "),
+        (regex::Regex::new(r" – ").unwrap(),  " &mdash; "),
+        (
+            regex::Regex::new(r"([^!])--([^>])").unwrap(),
+            "${1}&mdash;${2}",
+        ),
+        (regex::Regex::new(r" - ").unwrap(),      " &mdash; "),
+        (regex::Regex::new(r"  ").unwrap(),       " "),
+        (regex::Regex::new(r" & ").unwrap(),      " &amp; "),
+        (regex::Regex::new(r"…").unwrap(),        "&hellip;"),
+        (regex::Regex::new(r" ").unwrap(),    " "),
+        (regex::Regex::new(r"'").unwrap(),        "&rsquo;"),
+        (regex::Regex::new(r"  ").unwrap(), " "),
+        (regex::Regex::new(r" ").unwrap(),     " "),
+        (regex::Regex::new(r" ").unwrap(),     " "),
     ];
+    // @formatter:on
 
     let in_file_handle = File::open(in_file)
         .unwrap_or_else(|_| panic!("FixWord cannot open input file {}!", in_file));
