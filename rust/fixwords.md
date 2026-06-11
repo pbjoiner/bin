@@ -13,6 +13,6 @@
 
 ## Compile With Explicit Dependency Reference
 
-`rustc --out-dir ./.. --crate-type bin --emit=link --crate-name fixwords --edition=2021 fixwords.rs -L dependency=./deps --extern regex=./deps/libregex.rlib`
+`rustc --out-dir ./.. --crate-type bin --emit=link --crate-name fixwords --edition=2021 src/fixwords.rs -L dependency=./deps --extern regex=./deps/libregex.rlib`
 
 ## Finally, Learn How To Do All This Will Fn `cargo`

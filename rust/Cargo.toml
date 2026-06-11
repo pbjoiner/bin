@@ -16,6 +16,6 @@ regex = []
 
 [[bin]]
 name = "fixwords"
-path = "rust/fixwords.rs"
+path = "src/fixwords.rs"
 required-features = ["regex"]
 target = "./fixwords"
